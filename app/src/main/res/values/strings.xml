@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">AndroidBottomNav</string>
+    <string name="nav_home">HOME</string>
+    <string name="nav_search">SEARCH</string>
+    <string name="nav_account">Account</string>
+    <string name="nav_shopc">Shoppingchart</string>
+    <string name="nav_sales">SALES</string>
+    <string name="nav_shop">SALES</string>
+    <string name="google_maps_API_key">AIzaSyBBgyEix9zlBwpeqUuPqYbBEQAg3GEdhPw</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="full_name">اسم المستخدم..</string>
+    <string name="App_Logo">شعار التطبيق</string>
+    <string name="email">البريد الإلكتروني..</string>
+    <string name="password">كلمة السر..</string>
+    <string name="phone">رقم الجوال..</string>
+
+    <string name="register">تسجيل</string>
+    <string name="Already_signUp"> لديك بالفعل حساب؟ سجل الدخول</string>
+    <string name="input_error_name">name required</string>
+    <string name="input_error_email">email required</string>
+    <string name="input_error_password">password required</string>
+    <string name="input_error_phone">phone required</string>
+    <string name="input_error_password_length">password should be atleast 6 characters long</string>
+    <string name="input_error_phone_invalid">enter a valid phone number</string>
+    <string name="registration_success">Registered Successfully</string>
+    <string name="input_error_email_invalid">enter a valid email</string>
+
+
+    <!-- FireBase Database fields -->
+    <string name="db_users">Users</string>
+
+    <string-array name="branches">
+        <item>أسواق عذق الجزيرة - الروضة </item>
+        <item>أسواق عذق الجزيرة - الروابي </item>
+    </string-array>
+
+</resources>

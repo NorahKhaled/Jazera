@@ -1,0 +1,133 @@
+{
+  "project_info": {
+    "project_number": "602921620069",
+    "firebase_url": "https://android-project-master.firebaseio.com",
+    "project_id": "android-project-master",
+    "storage_bucket": "android-project-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602921620069:android:3a8c92eb9f6ae5f8",
+        "android_client_info": {
+          "package_name": "com.example.nouraalrossiny.androidbottomnav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602921620069-h8pupn4gclvjcr6u89v1p2atvuksv5cc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nouraalrossiny.androidbottomnav",
+            "certificate_hash": "c610ac36a27558e65fa203062edcb873d2a95642"
+          }
+        },
+        {
+          "client_id": "602921620069-afapnibprdm2241je2dod9do7dbg7n4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nouraalrossiny.androidbottomnav",
+            "certificate_hash": "b8e22a190dbe83ed2bf0da2e5ab85cf66512064f"
+          }
+        },
+        {
+          "client_id": "602921620069-jbs0897dterjnrkp7scm7sp1fg0b5opr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nouraalrossiny.androidbottomnav",
+            "certificate_hash": "4d9d8e673ecd854f9c3dc6018221c7c740ef9a6e"
+          }
+        },
+        {
+          "client_id": "602921620069-1g1cdv9ib9onvs7s6gkuaoie8euknh0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyComF8dN7vskfq0_1upALhUEJ1aonqUE4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602921620069-1g1cdv9ib9onvs7s6gkuaoie8euknh0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602921620069:android:53fcc0e60b857943",
+        "android_client_info": {
+          "package_name": "com.example.nouraalrossiny.myApplication6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602921620069-1g1cdv9ib9onvs7s6gkuaoie8euknh0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyComF8dN7vskfq0_1upALhUEJ1aonqUE4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602921620069:android:043204780d4ff888",
+        "android_client_info": {
+          "package_name": "com.example.reem.pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602921620069-1g1cdv9ib9onvs7s6gkuaoie8euknh0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyComF8dN7vskfq0_1upALhUEJ1aonqUE4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

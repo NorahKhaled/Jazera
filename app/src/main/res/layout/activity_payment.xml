@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f3f4">
+
+    <include
+        layout="@layout/toolbar1"
+        android:id="@+id/toolbar"></include>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="19dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="تأكيد الطلب"
+                android:textColor="@color/Tex"
+                android:layout_alignParentLeft="true"
+                />
+
+            <LinearLayout
+                android:id="@+id/tvchoise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_marginTop="56dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="الرجاء اختيار مكان الاستلام أو توصيل الشحنات الأنسب لك :"
+                    android:textSize="16dp"
+                    android:textColor="@color/textSub"
+                    android:gravity="center"
+
+                    />
+
+
+
+            </LinearLayout>
+
+            <!--**********Choose shipping way **********-->
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_below="@+id/tvchoise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rect"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/branch"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="bottom"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:onClick="Branch"
+                        >
+                        <ImageButton
+                            android:id="@+id/branchIMG"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/branch1"
+                            android:onClick="Branch"
+
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="استلام من الفرع"
+                            android:textColor="@color/colorDarkRed"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+
+                            />
+
+
+                    </LinearLayout>
+
+                    <View
+
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colordevider"></View>
+
+
+                    <LinearLayout
+                        android:id="@+id/home"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_gravity="bottom"
+
+
+                        >
+
+
+                        <ImageButton
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/house"
+                            android:onClick="Home"
+
+
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="توصيل إلى عنواني"
+                            android:textColor="@color/colorDarkRed"
+                            android:layout_marginTop="10dp"
+
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--**********Shipping**********-->
+            <LinearLayout
+                android:id="@+id/linear2a"
+                android:layout_below="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rect"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible"
+
+
+                >
+                <!--**************SHIP TO****************-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    >
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:id="@+id/tv_ship"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="الشحن إلى:"
+                            android:textColor="@color/Tex"
+                            android:layout_marginLeft="16dp"
+                            />
+
+                        <ImageView
+                            android:layout_weight="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/edit"
+                            android:gravity="right"
+
+                            />
+
+
+                    </LinearLayout>
+
+
+
+                    <!--**Neighborhood name**-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:id="@+id/NeiTv"
+                                android:layout_weight="5.5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="الحي :"
+                                android:textColor="@color/Tex"
+
+
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Neighborhood name fild**-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            >
+
+                            <EditText
+                                android:id="@+id/Nei"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/Tex"
+                                android:background="#00000000"
+                                android:maxLines="1"
+                                android:inputType="text"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                />
+
+                            <View
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colordevider" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Address Description**-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:id="@+id/addresstv"
+                                android:layout_weight="5.5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="الوصف :"
+                                android:textColor="@color/Tex"
+
+
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Address Description fild**-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            >
+
+                            <EditText
+                                android:id="@+id/address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/Tex"
+                                android:background="#00000000"
+                                android:maxLines="1"
+                                android:inputType="text"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                />
+
+                            <View
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colordevider" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--**********Receipt from branch **********-->
+            <LinearLayout
+                android:id="@+id/linear2b"
+                android:layout_below="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rect"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible"
+
+
+                >
+                <!--*******Details of Branch********-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    >
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:id="@+id/tv_rec"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="الاستلام من :"
+                            android:textColor="@color/Tex"
+                            android:layout_marginLeft="16dp"
+                            />
+
+                        <ImageView
+                            android:layout_weight="6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/edit"
+                            android:gravity="right"
+
+                            />
+
+
+                    </LinearLayout>
+
+
+
+                    <!--**Choise Branches name**-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:id="@+id/branchTv"
+                                android:layout_weight="5.5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="يرجى اختيار الفرع :"
+                                android:textColor="@color/Tex"
+
+
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Choise Branches fild**-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            >
+                            <Spinner
+                                android:id="@+id/spinner1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            </Spinner>
+
+
+
+
+
+                            <View
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colordevider" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Determanate Data **-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:id="@+id/datetv"
+                                android:layout_weight="5.5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="الرجاء إدخال تاريخ الإستلام  :"
+                                android:textColor="@color/Tex"
+
+
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--**Show Calender button**-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            >
+
+                            <Button
+                                android:id="@+id/BtnDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/textSub"
+                                android:text="فتح التقويم"
+                                android:onClick="Data"
+
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                />
+
+                            <View
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colordevider" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--**********Cupons**********-->
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_below="@+id/linear2b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+
+                >
+
+            </LinearLayout>
+
+            <!--**********Amount**********-->
+            <LinearLayout
+                android:id="@+id/amount"
+                android:layout_below="@+id/linear3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                >
+
+
+                <!--**Sub Total**-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+
+
+                    <TextView
+                        android:id="@+id/sub_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Tex"
+                        android:gravity="center"
+                        android:layout_gravity="bottom"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="المجموع : "
+                        android:textSize="19dp"
+                        android:textColor="@color/Tex"
+                        android:gravity="center"
+                        android:layout_gravity="bottom"
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <!--**********Submit**********-->
+
+            <LinearLayout
+                android:layout_below="@+id/amount"
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+
+
+                >
+
+                <Button
+                    android:id="@+id/S"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="تأكيد الطلب"
+                    android:textColor="@color/White"
+                    android:background="@drawable/rounded_button"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+
+
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</RelativeLayout>
