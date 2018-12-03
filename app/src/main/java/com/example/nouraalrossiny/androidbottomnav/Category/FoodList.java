@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FoodList extends AppCompatActivity {
 
 
+    private static final String TAG = "FoodList";
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     DatabaseReference foodList;
@@ -31,10 +32,12 @@ public class FoodList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
+        Log.d(TAG, "OnCreate : start");
         init();
     }
 
     private void loadListFood(String categoryId) {
+        Log.d(TAG, "LoadList : start");
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,

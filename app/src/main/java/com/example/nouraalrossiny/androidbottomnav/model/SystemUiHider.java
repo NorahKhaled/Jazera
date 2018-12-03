@@ -1,4 +1,4 @@
-package com.example.nouraalrossiny.androidbottomnav.util;
+package com.example.nouraalrossiny.androidbottomnav.model;
 
 import android.app.Activity;
 import android.os.Build;

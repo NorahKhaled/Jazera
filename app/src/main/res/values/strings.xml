@@ -1,36 +1,57 @@
 <resources>
-    <string name="app_name">ع</string>
-    <string name="nav_home">الصفحة ال</string>
-    <string name="nav_search">البحث</string>
-    <string name="nav_account">الحساب</string>
-    <string name="nav_shopc">السلة</string>
-    <string name="nav_sales">SALES</string>
-    <string name="google_maps_API_key">AIzaSyBBgyEix9zlBwpeqUuPqYbBEQAg3GEdhPw</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="full_name">اسم المستخدم..</string>
-    <string name="App_Logo">شعار التطبيق</string>
-    <string name="email">البريد الإلكتروني..</string>
-    <string name="password">كلمة السر..</string>
-    <string name="phone">رقم الجوال..</string>
 
-    <string name="register">تسجيل</string>
-    <string name="Already_signUp"> لديك بالفعل حساب؟ سجل الدخول</string>
-    <string name="input_error_name">name required</string>
-    <string name="input_error_email">email required</string>
-    <string name="input_error_password">password required</string>
-    <string name="input_error_phone">phone required</string>
-    <string name="input_error_password_length">password should be atleast 6 characters long</string>
-    <string name="input_error_phone_invalid">enter a valid phone number</string>
-    <string name="registration_success">Registered Successfully</string>
-    <string name="input_error_email_invalid">enter a valid email</string>
+        <string name="app_name">عذق الجزيرة</string>
+        <string name="google_maps_API_key">AIzaSyBBgyEix9zlBwpeqUuPqYbBEQAg3GEdhPw</string>
+
+        //icons
+        <string name="nav_home">الصفحة الرئيسية</string>
+        <string name="nav_category">القائمة</string>
+        <string name="nav_account">الحساب</string>
+        <string name="nav_cart">السلة</string>
+
+        <string name="title_activity_maps">الموقع</string>
+
+        <string name="App_Logo">شعار التطبيق</string>
+
+        //user
+        <string name="full_name">اسم المستخدم..</string>
+        <string name="email">البريد الإلكتروني..</string>
+        <string name="password">كلمة السر..</string>
+        <string name="phone">رقم الجوال..</string>
+        <string name="register">تسجيل</string>
+        <string name="Already_signUp"> لديك بالفعل حساب؟ سجل الدخول</string>
+        <string name="input_error_name">تأكد من اسم المستخدم!</string>
+        <string name="input_error_email">تأكد من البريد الإلكتروني!</string>
+        <string name="input_error_password">تأكد من كلمة المرور!</string>
+        <string name="input_error_phone">تأكد من رقم الجوال!</string>
+        <string name="input_error_password_length">يجب ان تكون كلمة المرور أكثر من 6</string>
+        <string name="registration_success">تم تسجيل المستخدم بنجاح</string>
+
+
+        <!-- FireBase Database fields -->
+        <string name="db_users">Users</string>
+
+        //Branches
+        <string-array name="branches">
+            <item>أسواق عذق الجزيرة - الروضة </item>
+            <item>أسواق عذق الجزيرة - الروابي </item>
+        </string-array>
 
 
     <!-- FireBase Database fields -->
-    <string name="db_users">Users</string>
+    <string name="submit_request">تأكيد الطلب</string>
+    <string name="Total">المجموع :</string>
+    <string name="order_summery">ملخص الطلب</string>
+    <string name="submit_Done">تم إستلام طلبك بنجاح</string>
+    <string name="Thanks_For_User">شكراً لإستخدامكم تطبيق عذق الجزيرة</string>
+    <string name="back_To_App">الرجوع إلى التطبيق</string>
+    <string name="reSetPassword">إعادة تعيين كلمة المرور</string>
+    <string name="insertEmail">أدخل البريد الإلكتروني</string>
+    <string name="Email">البريد الإلكتروني</string>
+    <string name="refresh">تحديث</string>
+    <string name="backToBasePage">الرجوع إلى الصفحة الرئيسية</string>
 
-    <string-array name="branches">
-        <item>أسواق عذق الجزيرة - الروضة </item>
-        <item>أسواق عذق الجزيرة - الروابي </item>
-    </string-array>
 
-</resources>
+    </resources>
+
+

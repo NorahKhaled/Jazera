@@ -39,7 +39,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseDatabase mfirebaseDatabase;
     private DatabaseReference myRef;
 
-
     private FirebaseAuth.AuthStateListener mAuthListener;
     String uid;
 
@@ -48,27 +47,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        Log.d(TAG, "onCreate: started.");
         mContext = SignUpActivity.this;
 
-        editTextName = findViewById(R.id.nameSignUp);
-        editTextEmail = findViewById(R.id.emailSignUp);
-        editTextPassword = findViewById(R.id.passwordSignUp);
-        editTextPhone = findViewById(R.id.phoneSignUp);
-        btnSignUp = findViewById(R.id.buttonSignUp);
-        Log.d(TAG, "onCreate: started.");
-
-
-        progressBar = findViewById(R.id.progressbarSignUp);
-        progressBar.setVisibility(View.GONE);
-
-        mAuth = FirebaseAuth.getInstance();
-
-        findViewById(R.id.buttonSignUp).setOnClickListener(this);
-        findViewById(R.id.textViewLogin).setOnClickListener(this);
+        init();
         setupFirebaseAuth();
     }
 
     public void registerUser(){
+        Log.d(TAG, "register: started.");
+
         final String name = editTextName.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
@@ -125,7 +113,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
-
                         if (task.isSuccessful()) {
                             uid= mAuth.getCurrentUser().getUid();
                             Log.d("TAGReem", "onComplete: Authstate changed: " + uid);
@@ -141,20 +128,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }//end Account
                 });
-
     }
 
-
-    private boolean checkInputs(String email, String username, String password){
-        Log.d(TAG, "checkInputs: checking inputs for null values.");
-        if(email.equals("") || username.equals("") || password.equals("")){
-            return false;
-        }
-        return true;
-    }
 
     @Override
     protected void onStart() {
@@ -166,21 +143,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-     /*
-    ------------------------------------ Firebase ---------------------------------------------
-     */
 
-    /**
-     * Setup the firebase auth object
-     */
+  //  ------------------------------------ Firebase ---------------------------------------------
+
+
+    //Setup the firebase auth object
+
     private void setupFirebaseAuth() {
         Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.");
 
         mAuth = FirebaseAuth.getInstance();
         mfirebaseDatabase=FirebaseDatabase.getInstance(); //authintication to DB
         myRef=mfirebaseDatabase.getReference();
-
-
     }
 
     @Override
@@ -195,7 +169,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 //     startActivity(new Intent(this, MainActivity.class));
                 break;
-
         }
+    }
+
+    private void init(){
+        editTextName = findViewById(R.id.nameSignUp);
+        editTextEmail = findViewById(R.id.emailSignUp);
+        editTextPassword = findViewById(R.id.passwordSignUp);
+        editTextPhone = findViewById(R.id.phoneSignUp);
+        btnSignUp = findViewById(R.id.buttonSignUp);
+
+        progressBar = findViewById(R.id.progressbarSignUp);
+        progressBar.setVisibility(View.GONE);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        findViewById(R.id.buttonSignUp).setOnClickListener(this);
+        findViewById(R.id.textViewLogin).setOnClickListener(this);
     }
 }

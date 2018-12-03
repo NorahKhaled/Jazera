@@ -34,7 +34,7 @@
                 <TextView
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
-                    android:text="المجموع"
+                    android:text="@string/Total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -56,7 +56,7 @@
 
             <Button
                 android:id="@+id/btnPlaceOrder"
-                android:text="تأكيد الطلب"
+                android:text="@string/submit_request"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_marginRight="8dp"

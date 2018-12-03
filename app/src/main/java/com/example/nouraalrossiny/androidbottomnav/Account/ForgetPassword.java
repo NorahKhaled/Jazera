@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetPassword extends AppCompatActivity {
+    private static final String TAG = "ForgetPassword";
     private EditText inputEmail;
-
     private Button btnReset, btnBack;
-
     private FirebaseAuth auth;
-
     private ProgressBar progressBar;
 
 
@@ -29,38 +28,27 @@ public class ForgetPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
-        inputEmail = (EditText) findViewById(R.id.email);
+        Log.d(TAG, "onCreate: start");
 
-        btnReset = (Button) findViewById(R.id.btn_reset_password);
-
-        btnBack = (Button) findViewById(R.id.btn_back);
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        auth = FirebaseAuth.getInstance();
-
+        init();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d(TAG, "onCreate: start");
                 String email = inputEmail.getText().toString().trim();
-
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-
                 auth.sendPasswordResetEmail(email)
-
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -69,7 +57,6 @@ public class ForgetPassword extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(ForgetPassword.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
-
                                 progressBar.setVisibility(View.GONE);
                             }
                         });
@@ -77,4 +64,11 @@ public class ForgetPassword extends AppCompatActivity {
         });
     }
 
+    private void init(){
+        inputEmail = (EditText) findViewById(R.id.email);
+        btnReset = (Button) findViewById(R.id.btn_reset_password);
+        btnBack = (Button) findViewById(R.id.btn_back);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        auth = FirebaseAuth.getInstance();
+    }
 }

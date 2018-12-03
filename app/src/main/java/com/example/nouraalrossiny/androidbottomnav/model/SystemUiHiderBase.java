@@ -1,8 +1,10 @@
-package com.example.nouraalrossiny.androidbottomnav.util;
+package com.example.nouraalrossiny.androidbottomnav.model;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.nouraalrossiny.androidbottomnav.model.SystemUiHider;
 
 /**
  * A base implementation of {@link SystemUiHider}. Uses APIs available in all

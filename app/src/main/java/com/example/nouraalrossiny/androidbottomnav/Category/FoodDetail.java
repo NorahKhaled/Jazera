@@ -4,6 +4,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class FoodDetail extends AppCompatActivity {
 
+    private static final String TAG = "FoodDetail";
     TextView food_name, food_price, food_description;
     ImageView food_image;
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -39,8 +41,8 @@ public class FoodDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
 
+        Log.d(TAG, "OnCreat: start");
         foods = FirebaseDatabase.getInstance().getReference("Foods");
-
         // Init view
         numberButton = (ElegantNumberButton)findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
@@ -51,20 +53,19 @@ public class FoodDetail extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "OnClick: start");
                 new Database(getBaseContext()).addToCart(new Order(
                         foodId,
                         currentFood.getName(),
                         numberButton.getNumber(),
                         currentFood.getPrice() ,
                         currentFood.getDiscount()
-
                 ));
-
                 Toast.makeText(FoodDetail.this, "تم الإضافه إلى السلة", LENGTH_SHORT).show();
             }
         });
 
-        food_description = findViewById(R.id.food_description);
+        //food_description = findViewById(R.id.food_description);
         food_name = findViewById(R.id.food_name);
         food_price = findViewById(R.id.food_price);
         food_image = findViewById(R.id.img_food);
@@ -73,39 +74,31 @@ public class FoodDetail extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapseAppbar);
 
-
         //Get Food Id From Internet
         if (getIntent() != null)
             foodId = getIntent().getStringExtra("FoodId");
         if (!foodId.isEmpty()) {
             getDetailFood(foodId);
         }
-
-
     }
 
 
     private void getDetailFood(String foodId) {
-
+        Log.d(TAG, "Get detail: start");
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentFood = dataSnapshot.getValue(Food.class);
-
                 Picasso.with(getBaseContext()).load(currentFood.getImage()).into(food_image);
-
                 collapsingToolbarLayout.setTitle(currentFood.getName());
-
                 food_price.setText(currentFood.getPrice());
-
                 food_name.setText(currentFood.getName());
-
-                food_description.setText(currentFood.getUnit());
+                //we put it later
+                //food_description.setText(currentFood.getUnit());
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

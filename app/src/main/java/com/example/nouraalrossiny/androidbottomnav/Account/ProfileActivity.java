@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import android.support.v7.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,9 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ProfileActivity extends AppCompatActivity  implements View.OnClickListener{
     private static final int CHOOSE_IMAGE = 101;
 
+    private static final String TAG = "ProfileActivity";
     TextView UserNameDisplay;
     ProgressBar progressBar;
-
     FirebaseAuth mAuth;
 
 
@@ -33,23 +34,14 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        mAuth = FirebaseAuth.getInstance();
+        Log.d(TAG, "OnCreate: start");
 
-
-        UserNameDisplay =findViewById(R.id.userName_prfile);
-        progressBar = findViewById(R.id.profile_progressbar);
-        progressBar.setVisibility(View.GONE);
-
-
-        findViewById(R.id.deleteAccount_Profile).setOnClickListener(this);
-        findViewById(R.id.BacktoHome).setOnClickListener(this);
-        findViewById(R.id.user_Logout).setOnClickListener(this);
-
+        init();
         loadUserInformation();
-
     }
 
     private void loadUserInformation() {
+        Log.d(TAG, "LoadInfo: start");
         final FirebaseUser  user = mAuth.getCurrentUser();
 
         if(user!=null){
@@ -63,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
 
     @Override
     protected void onStart() {
+        Log.d(TAG, "onStar: start");
         super.onStart();
         if (mAuth.getCurrentUser() == null) {
             finish();
@@ -72,6 +65,8 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
 
 
     private void delete() {
+        Log.d(TAG, "Delete: start");
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String uid= mAuth.getCurrentUser().getUid();
@@ -96,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
             case R.id.deleteAccount_Profile:
                 delete();
@@ -110,5 +106,16 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
                 startActivity(new Intent(this, MainActivity.class));
 
         }
+    }
+
+    private void init(){
+        mAuth = FirebaseAuth.getInstance();
+        UserNameDisplay =findViewById(R.id.userName_prfile);
+        progressBar = findViewById(R.id.profile_progressbar);
+        progressBar.setVisibility(View.GONE);
+
+        findViewById(R.id.deleteAccount_Profile).setOnClickListener(this);
+        findViewById(R.id.BacktoHome).setOnClickListener(this);
+        findViewById(R.id.user_Logout).setOnClickListener(this);
     }
 }

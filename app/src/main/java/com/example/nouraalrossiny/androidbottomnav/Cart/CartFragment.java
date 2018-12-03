@@ -66,8 +66,7 @@ public class CartFragment extends Fragment {
 
         recyclerView =(RecyclerView)RootView.findViewById(R.id.listCart);
         recyclerView.setHasFixedSize(true);
-        //layoutManager = new LinearLayoutManager(this);
-        // layoutManager = new LinearLayoutManager(this.getContext());
+
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
@@ -79,7 +78,6 @@ public class CartFragment extends Fragment {
             public void onClick(View view) {
                 String Total = txtTotalPrice.getText().toString();
 
-               // if ( Total.equals("0")){
                 if (total==0){
                     Toast.makeText(getActivity(), "السلة فارغة", Toast.LENGTH_LONG).show();
                 }
@@ -103,21 +101,16 @@ public class CartFragment extends Fragment {
 
 
     private void loadListFood() {
-        //cart = new Database(this).getCarts();
         cart = new Database(getActivity()).getCarts();
 
-        //cart = new Database(this).getCarts();
-        // adapter = new CartAdapter(cart,this);
-        //adapter = new CartAdapter(cart,this);
+
         adapter = new CartAdapter(cart,getActivity());
         recyclerView.setAdapter(adapter);
 
         //Calculate total price
         total = 0;
         for (Order order:cart) {
-//Minute 36
             int Item_order = Integer.parseInt(order.getPrice().replaceAll("[\\D]",""));
-            //int Item_order = Integer.parseInt("3");
             int Item_Q = (Integer.parseInt(order.getQuantity()));
 
             total +=Item_order * Item_Q;

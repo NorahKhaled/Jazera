@@ -19,7 +19,7 @@
         android:layout_marginTop="19dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="ملخص الطلب"
+        android:text="@string/order_summery"
         android:textColor="@color/Tex"
         android:layout_alignParentLeft="true"
         />
@@ -34,14 +34,14 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="10dp"
 
-        android:text="تم إستلام طلبك بنجاح "
+        android:text="@string/submit_Done"
         />
 
     <TextView
         android:id="@+id/Order_NO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="شكراً لإستخدامكم تطبيق عذق الجزيرة"
+        android:text="@string/Thanks_For_User"
         android:textColor="@color/textSub"
         android:gravity="center"
         android:layout_marginTop="6dp"
@@ -79,7 +79,7 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
-            android:text="الرجوع إلى التطبيق"
+            android:text="@string/back_To_App"
             android:textColor="@color/White"
             android:textSize="15sp"
             android:textStyle="bold"

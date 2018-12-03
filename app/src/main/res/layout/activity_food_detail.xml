@@ -88,10 +88,10 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@drawable/money_black"
+                            android:layout_width="23dp"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content" />
+                            android:src="@drawable/money" />
 
                         <TextView
                             android:id="@+id/food_price"

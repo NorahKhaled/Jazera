@@ -1,6 +1,7 @@
 package com.example.nouraalrossiny.androidbottomnav.Account;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class AccoutFragment extends Fragment implements View.OnClickListener{
     FirebaseAuth mAuth;
     EditText editTextEmail, editTextPassword;
     ProgressBar progressBar;
+    private static final String TAG = "AccoutFragment";
 
     public AccoutFragment() {
         // Required empty public constructor
@@ -38,6 +40,7 @@ public class AccoutFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Log.d(TAG, "OnCreat: start");
         // Inflate the layout for this fragment
         View RootView= inflater.inflate(R.layout.fragment_accout, container, false);
         mAuth = FirebaseAuth.getInstance();
@@ -54,6 +57,8 @@ public class AccoutFragment extends Fragment implements View.OnClickListener{
     }
 
     private void userLogin() {
+        Log.d(TAG, "UserLogin: start");
+
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -109,6 +114,7 @@ public class AccoutFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onStart() { //already loged in
         super.onStart();
+        Log.d(TAG, "OnStart: start");
 
         if (mAuth.getCurrentUser() != null) {
             getActivity().finish();//finish from this

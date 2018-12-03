@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar=findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar); //make it default actionBar for this activity(display name on it)
-
         mMainFrame =findViewById(R.id.main_frame);
         mMainNav = findViewById(R.id.main_nav);
         homeFragment = new HomeFragment();
