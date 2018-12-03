@@ -1,4 +1,4 @@
-package com.example.nouraalrossiny.androidbottomnav;
+package com.example.nouraalrossiny.androidbottomnav.Account;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.example.nouraalrossiny.androidbottomnav.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -93,7 +93,12 @@ public class AccoutFragment extends Fragment implements View.OnClickListener{
                     Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//clear all open activites and open it
                     startActivity(intent);
-                } else { //print actual exception
+                } else if(task.getException() instanceof FirebaseAuthUserCollisionException){
+
+                    Toast.makeText(getApplicationContext(),"You are ALREADY sign in",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }{ //print actual exception
                     Toast.makeText(getApplicationContext(), "failed credintial", Toast.LENGTH_SHORT).show();
                 }
             }

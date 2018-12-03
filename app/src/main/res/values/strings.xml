@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">AndroidBottomNav</string>
-    <string name="nav_home">HOME</string>
-    <string name="nav_search">SEARCH</string>
-    <string name="nav_account">Account</string>
-    <string name="nav_shopc">Shoppingchart</string>
+    <string name="app_name">ع</string>
+    <string name="nav_home">الصفحة ال</string>
+    <string name="nav_search">البحث</string>
+    <string name="nav_account">الحساب</string>
+    <string name="nav_shopc">السلة</string>
     <string name="nav_sales">SALES</string>
-    <string name="nav_shop">SALES</string>
     <string name="google_maps_API_key">AIzaSyBBgyEix9zlBwpeqUuPqYbBEQAg3GEdhPw</string>
     <string name="title_activity_maps">Map</string>
     <string name="full_name">اسم المستخدم..</string>

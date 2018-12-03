@@ -1,4 +1,4 @@
-package com.example.nouraalrossiny.androidbottomnav;
+package com.example.nouraalrossiny.androidbottomnav.Category;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.nouraalrossiny.androidbottomnav.Database.Database;
+import com.example.nouraalrossiny.androidbottomnav.R;
 import com.example.nouraalrossiny.androidbottomnav.model.Food;
 import com.example.nouraalrossiny.androidbottomnav.model.Order;
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class FoodDetail extends AppCompatActivity {
@@ -30,9 +30,7 @@ public class FoodDetail extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     FloatingActionButton btnCart;
     ElegantNumberButton numberButton;
-
     String foodId="";
-
     DatabaseReference foods;
     Food currentFood;
 

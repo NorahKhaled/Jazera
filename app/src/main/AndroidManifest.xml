@@ -47,15 +47,15 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".Notification" />
-        <activity android:name=".FoodList" />
-        <activity android:name=".FoodDetail" />
+        <activity android:name=".Category.FoodList" />
+        <activity android:name=".Category.FoodDetail" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ForgetPassword" />
+        <activity android:name=".Account.ProfileActivity" />
+        <activity android:name=".Account.SignUpActivity" />
+        <activity android:name=".Account.ForgetPassword" />
         <activity android:name=".SettingAccount" />
-        <activity android:name=".Payment" />
-        <activity android:name=".Invoice"></activity>
+        <activity android:name=".Cart.Payment" />
+        <activity android:name=".Cart.Invoice"></activity>
     </application>
 
 </manifest>

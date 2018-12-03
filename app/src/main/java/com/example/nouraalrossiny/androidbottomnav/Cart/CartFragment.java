@@ -1,28 +1,23 @@
-package com.example.nouraalrossiny.androidbottomnav;
+package com.example.nouraalrossiny.androidbottomnav.Cart;
 
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nouraalrossiny.androidbottomnav.Database.Database;
+import com.example.nouraalrossiny.androidbottomnav.R;
 import com.example.nouraalrossiny.androidbottomnav.model.Order;
-import com.example.nouraalrossiny.androidbottomnav.model.Request;
 import com.example.nouraalrossiny.androidbottomnav.viewHolder.CartAdapter;
-import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,13 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChartFragment extends Fragment {
+public class CartFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -52,8 +45,8 @@ public class ChartFragment extends Fragment {
 
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
-
-    public ChartFragment() {
+    int total;
+    public CartFragment() {
         // Required empty public constructor
     }
 
@@ -84,43 +77,28 @@ public class ChartFragment extends Fragment {
         btnplace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Create new Request
-                //Create new Request
-
-                //   showAlertDialog();
                 String Total = txtTotalPrice.getText().toString();
-/*if (mAuth.getCurrentUser() != null ) {
-                    Intent intent = new Intent(getActivity(),Payment.class);
-                    intent.putExtra("Total",Total);
-                    startActivity(intent);
-                }
-                else*/
 
-
-if(FirebaseAuth.getInstance().getCurrentUser() != null){
-
-    Intent intent = new Intent(getActivity(),Payment.class);
-    intent.putExtra("Total",Total);
-    startActivity(intent);}
-else  if (Total == "0"){
+               // if ( Total.equals("0")){
+                if (total==0){
                     Toast.makeText(getActivity(), "السلة فارغة", Toast.LENGTH_LONG).show();
                 }
-                else {
+                else if(FirebaseAuth.getInstance().getCurrentUser() != null ){
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    String user_id =  mAuth.getCurrentUser().getUid();
+                    Intent intent = new Intent(getActivity(),Payment.class);
+                    intent.putExtra("Total",Total);
+                    intent.putExtra("user_id",user_id);
+                    startActivity(intent);
+                }else{
                     Toast.makeText(getActivity(), "يرجى تسجيل الدخول لإكمال عملية الشراء", Toast.LENGTH_LONG).show();
                 }
-
-
-
-
             }
         });
+
         loadListFood();
 
-
-
         return RootView;
-
-
     }
 
 
@@ -135,7 +113,7 @@ else  if (Total == "0"){
         recyclerView.setAdapter(adapter);
 
         //Calculate total price
-        int total = 0;
+        total = 0;
         for (Order order:cart) {
 //Minute 36
             int Item_order = Integer.parseInt(order.getPrice().replaceAll("[\\D]",""));
@@ -144,9 +122,8 @@ else  if (Total == "0"){
 
             total +=Item_order * Item_Q;
         }
-        Locale locale = new Locale("ar","KSA");
-        // Locale locale = new Locale("ar","KSA");
-
+        Log.d("TAGReem", "Total : " + total);
+        Locale locale = new Locale("ar","SA");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 
         txtTotalPrice.setText(fmt.format(total));

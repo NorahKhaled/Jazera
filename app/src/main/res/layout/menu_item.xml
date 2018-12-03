@@ -13,14 +13,16 @@
             android:id="@+id/menu_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
             android:src="@drawable/common_full_open_on_phone" />
 
         <TextView
             android:id="@+id/menu_name"
             android:text="Name of menu"
-            android:textColor="@color/colorWhite"
-            android:background="@color/colorDarkRed"
+            android:textColor="@color/colorDarkRed"
+            android:background="@color/grayWhite"
             android:gravity="center"
             android:textSize="20dp"
             android:layout_alignParentBottom="true"

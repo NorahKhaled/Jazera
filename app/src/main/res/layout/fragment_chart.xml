@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:background="@drawable/back3"
-    tools:context=".ChartFragment">
+    tools:context=".Cart.CartFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listCart"

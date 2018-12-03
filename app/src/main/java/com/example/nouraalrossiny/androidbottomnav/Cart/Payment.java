@@ -1,10 +1,11 @@
-package com.example.nouraalrossiny.androidbottomnav;
+package com.example.nouraalrossiny.androidbottomnav.Cart;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,13 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nouraalrossiny.androidbottomnav.Database.Database;
+import com.example.nouraalrossiny.androidbottomnav.R;
 import com.example.nouraalrossiny.androidbottomnav.model.Order;
 import com.example.nouraalrossiny.androidbottomnav.model.Request;
 import com.example.nouraalrossiny.androidbottomnav.viewHolder.CartAdapter;
-import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -31,14 +35,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import static java.util.ResourceBundle.getBundle;
-
 public class Payment extends AppCompatActivity implements DatePickerDialog.OnDateSetListener , AdapterView.OnItemSelectedListener{
 
     static final String fromEmail = "aljazeraha602@gmail.com";
     static final String fromPassword = "Jj123456789";
     //********************
-   // FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
 
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
@@ -54,8 +56,8 @@ public class Payment extends AppCompatActivity implements DatePickerDialog.OnDat
     Button Submit;
     EditText add1 , add2 ;
     String B_choic;
-    String Total;
-
+    String Total, user_id;
+    String currentDateStrint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,8 @@ public class Payment extends AppCompatActivity implements DatePickerDialog.OnDat
         if(bundle!=null)
         {
             Total =(String) bundle.get("Total");
+            user_id = (String) bundle.get("user_id");
+            Log.d("TAGReem", "Bundle :" + user_id);
         }
         Sun_Total.setText(Total);
 
@@ -123,7 +127,7 @@ public class Payment extends AppCompatActivity implements DatePickerDialog.OnDat
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        String currentDateStrint = DateFormat.getDateInstance().format(c.getTime());
+        currentDateStrint = DateFormat.getDateInstance().format(c.getTime());
         date.setText(currentDateStrint);
     }
 
@@ -157,68 +161,73 @@ public class Payment extends AppCompatActivity implements DatePickerDialog.OnDat
 
     public void Submit(){
 
-        if (number_choice == 0){
-            Toast.makeText(getBaseContext(), "يرجى اختيار طريقة الإستلام", Toast.LENGTH_LONG).show();
-        }
-        else {
 
             if (number_choice == 1){
-                Subject = "طلب جديد : التوصيل إلى المنزل";
+                String Addreess1 = add1.getText().toString();
+                String Addreess2 = add2.getText().toString();
 
-                String info = "الحي :" + add1.getText().toString() + " الوصف : " + add2.getText().toString()+ " Total "+ Total;
-                Message(Subject, info);
-
-           //     Move_to_home();
-
-
+                if(TextUtils.isEmpty(Addreess1)) {
+                    add1.setError("الرجاء إدخال الحي");
+                    return;}
+                else if(TextUtils.isEmpty(Addreess2)){ add2.setError("الرجاء إدخال الوصف");
+                    return;
+                }
+                else {
+                    Subject = "طلب جديد : التوصيل إلى المنزل";
+                    String addres1 = add1.getText().toString();
+                    String addres2 = add2.getText().toString();
+                    info = "الحي :" + addres1 + " الوصف : " + addres2 + " Total " + Total;
+                    Message(Subject, info);
+                    String Add = addres1  + " ," + addres2;
+                    submitReq(Add);
+                }
             }
             else if (number_choice == 2){
-
-                Subject="طلب جديد : الإستلام من الفرع";
-
-                info = "استلام من فرع :" + B_choic + "في تاريخ" + date +" Total "+ Total;
-                Message(Subject, info);
-
-
+                if( date == null){
+                    Toast.makeText(getBaseContext(), "يرجى تحديد تاريخ الإستلام", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Subject = "طلب جديد : الإستلام من الفرع";
+                    info = "استلام من فرع :" + B_choic + "في تاريخ" + date + " Total " + Total;
+                    Log.d("TAGReem", "sub");
+                    Message(Subject, info);
+                    Log.d("TAGReem", "sub 2");
+                    submitReq("");
+                    Log.d("TAGReem", "sub 3");
+                }
 
             }
             else {
                 Toast.makeText(getApplicationContext(), "يرجى اختيار طريقة الإستلام", Toast.LENGTH_LONG).show();
             }
-
-            String Add = add1 + " ," + add2;
-
-
-            Request request = new Request(
-                 //   mAuth.getCurrentUser().getPhoneNumber(),
-                 //   mAuth.getCurrentUser().getDisplayName(),
-                    //addres,
-                    "0","sara",
-                    Add,
-                    Total,
-                    cart
-
-            );
-
-            // Submite To firebase
-            //We will using System.CurrentMilli to key
-            requests.child(String.valueOf(System.currentTimeMillis()))
-                    .setValue(request);
-
-            //Delete Cart:
-
             new Database(getBaseContext()).CleanCart();
-            // new Database(this).CleanCart();
-
-
-            //
-            //
-
-
-
-
         }
 
+
+
+    public void submitReq(final String add){
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref = database.child("Users").child(user_id);
+        Log.d("TAGReem", "ID: " + user_id);
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Code
+                Log.d("TAGReem", "start ");
+                String phone= dataSnapshot.child("phone").getValue().toString();
+                Log.d("TAGReem", "phone:: " + phone);
+                String name= dataSnapshot.child("name").getValue().toString();
+                Log.d("TAGReem", "name:: " + name);
+
+                Request request = new Request(phone ,name , add, Total, cart);
+                requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("TAGReem", "onCancelled", databaseError.toException());
+            }
+        });
     }
 
     public void Message(String sub , String Body ){
@@ -231,11 +240,11 @@ public class Payment extends AppCompatActivity implements DatePickerDialog.OnDat
         new SendMailTask(this).execute(fromEmail,
                 fromPassword, toEmailList, emailSubject, emailBody);
 
-        Move_to_home();
+        Move_to_Invoice();
 
     }
 
-    public void Move_to_home()
+    public void Move_to_Invoice()
     {
         Intent initen = new Intent(Payment.this,Invoice.class);
         startActivity(initen);
